@@ -1,0 +1,46 @@
+1. pip install social-auth-app-django
+2. include social_django app settings.py
+install apps = [
+    'social_django',
+]
+3. setting.py down:
+ here code:
+     AUTHENTICATION_BACKENDS = [
+       'social_core.backends.github.GithubOAuth2',
+       'social_core.backends.google.GoogleOAuth2',
+       'social_core.backends.linkedin.LinkedinOAuth2',
+       'social_core.backends.facebook.FacebookOAuth2',
+
+       'django.contrib.auth.backends.ModelBackend',
+]
+
+MIDDLEWARE = [
+     'social_django.middleware.SocialAuthException',
+]
+
+tempalte = [
+    'social_django.context_processors.backends',
+    'social_django.context_processors.login_redirect',
+]
+
+url =[
+   path('oauth/', include('social_django.urls', namespace="social"))
+]
+
+login.html page:
+<a href={% url 'social:begin' 'github' %}>Github</a>
+<a href={% url 'social:begin' 'google-oauth2' %}>Google</a>
+
+Google developers Console:
+1. Credentials Option select: OauthclientID
+2. web application select
+3. Full error message Authorized redirect URLS paste
+4. Authorized javascripts origins : just http://127.0.0.1:8000/
+  create option select::::
+5. LOGIN_REDIRECT_URL = "index"
+   SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = " Google+Key"
+   SOCIAL_AUTH_GOOGLE_OAUTH_SECRET_KEY = " Google+ secret key paste "
+
+
+
+
