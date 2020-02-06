@@ -1,0 +1,3 @@
+#Example Read Me 
+prothon ei pip install social-auth-app-django install korte hobe 
+tarpor install app add korte hobe..........
